@@ -36,8 +36,8 @@ exports.getContactUs = (req, res)=>{
             pageInfo.totalData= totalData;
             pageInfo.totalPage= Math.ceil(totalData/limit);
             pageInfo.currentPage= parseInt(page);
-            pageInfo.nextPage= pageInfo.currentpage < pageInfo.totalpage ? pageInfo.currentpage + 1 : null;
-            pageInfo.prevpage= pageInfo.currentpage > 1 ? pageInfo.currentpage - 1 : null;
+            pageInfo.nextPage= pageInfo.currentPage < pageInfo.totalPage ? pageInfo.currentPage + 1 : null;
+            pageInfo.prevPage= pageInfo.currentPage > 1 ? pageInfo.currentPage - 1 : null;
             return response(res, 'list all feedback', results, pageInfo);
         });
     });

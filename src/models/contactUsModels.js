@@ -22,7 +22,7 @@ exports.createContactUs=(data, cb)=>{
 // }
 
 exports.getContactUs = (search_by, keyword, sortBy, sorting, limit=parseInt(LIMIT_DATA), offset=0,cb)=>{
-  db.query(`SELECT * FROM contactus WHERE ${search_by} LIKE '%${keyword}%' ORDER BY ${sortBy} ${sorting} limit $1 offset $2`, [limit, offset], (err, res)=>{
+  db.query(`SELECT * FROM contactus WHERE ${search_by} ILIKE '%${keyword}%' ORDER BY ${sortBy} ${sorting} limit $1 offset $2`, [limit, offset], (err, res)=>{
     // console.log(res);
     cb(err, res.rows);
   });
@@ -30,7 +30,7 @@ exports.getContactUs = (search_by, keyword, sortBy, sorting, limit=parseInt(LIMI
 
 //count users
 exports.countGetContactUs = (search_by, keyword, cb)=>{
-  db.query(`SELECT * FROM contactus WHERE ${search_by} LIKE '%${keyword}%'`, (err, res)=>{
+  db.query(`SELECT * FROM contactus WHERE ${search_by} ILIKE '%${keyword}%'`, (err, res)=>{
     cb(err, res.rowCount);
   });
 };
@@ -51,6 +51,6 @@ exports.deleteDetailContactUs = (id, cb)=>{
   // console.log(id);
   db.query(q, val, (err, res)=>{
     // console.log(res.rows[0]);
-    cb(err, res.rows[0]);
+    cb(err, res);
   });
 };
