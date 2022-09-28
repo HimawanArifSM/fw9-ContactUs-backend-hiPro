@@ -54,3 +54,16 @@ exports.deleteDetailContactUs = (id, cb)=>{
     cb(err, res);
   });
 };
+
+exports.editContactUs = (id, data, cb)=>{
+  const q = 'UPDATE contactus SET fullname=$2, email=$3, messages=$4 WHERE id=$1 RETURNING *';
+  const val = [id, data.fullname, data.email, data.messages];
+  // console.log(data.fullname);
+  // console.log(data.email);
+  // console.log(data.messages);
+  // console.log(id);
+  db.query(q, val, (err, res)=>{
+    // console.log(res);
+    cb(err, res.rows);
+  });
+};

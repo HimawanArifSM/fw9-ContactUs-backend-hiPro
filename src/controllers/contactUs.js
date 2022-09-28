@@ -50,6 +50,15 @@ exports.getDetailContactUs = (req, res)=>{
     });
 };
 
+exports.editContactUs = (req, res)=>{
+    const {id}=req.params;
+    contactUsModels.editContactUs(id, req.body, (err, results)=>{
+        if (results.length > 0){
+            return response(res, 'detail feedback', results);
+        }
+    });
+};
+
 exports.deleteContactUs = (req, res)=>{
     const {id}=req.params;
     contactUsModels.deleteDetailContactUs(id, (err, results)=>{
