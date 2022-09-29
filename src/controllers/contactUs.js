@@ -29,7 +29,7 @@ exports.getContactUs = (req, res)=>{
         // console.log(err);
         // console.log(res);
         if(results.length<1){
-            return response(res, 'there is no data', results, pageInfo);
+            return response(res, 'there is no data');
         }
         const pageInfo = {};
         contactUsModels.countGetContactUs(seacrhBy, keyword, (err, totalData)=>{
